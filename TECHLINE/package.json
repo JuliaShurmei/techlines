@@ -1,0 +1,18 @@
+{
+  "name": "techline",
+  "version": "1.0.0",
+  "description": "The backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node server/index.js"
+  },
+  "author": "Julia Shirmei",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.1.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.2.2"
+  }
+}
