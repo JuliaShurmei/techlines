@@ -13,11 +13,11 @@ import {
   AlertDescription,
   Wrap,
 } from "@chakra-ui/react";
-
 import { Link as ReactLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CartItem from "../components/CartItem";
 import CartOrderSummary from "../components/CartOrderSummary";
+
 const CartScreen = () => {
   const cartInfo = useSelector((state) => state.cart);
   const { loading, error, cart } = cartInfo;
@@ -35,19 +35,19 @@ const CartScreen = () => {
             speed='0.65s'
             emptyColor='gray.200'
             color='orange.500'
-            sixe='xl'
+            size='xl'
           />
         </Stack>
       ) : error ? (
         <Alert status='error'>
           <AlertIcon />
-          <AlertTitle> We are sorry! </AlertTitle>
-          <AlertDescription> {error} </AlertDescription>
+          <AlertTitle>We are sorry!</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
         </Alert>
-      ) : CartScreen.length <= 0 ? (
+      ) : cart.length <= 0 ? (
         <Alert status='warning'>
           <AlertIcon />
-          <AlertTitle> Your cart is empty. </AlertTitle>
+          <AlertTitle>Your cart is empty.</AlertTitle>
           <AlertDescription>
             <Link as={ReactLink} to='/products'>
               Click here to see our products.
@@ -68,7 +68,7 @@ const CartScreen = () => {
           >
             <Stack spacing={{ base: "8", md: "10" }} flex='2'>
               <Heading fontSize='2xl' fontWeight='extrabold'>
-                Shopping Cart
+                Shopping Cart {getHeadingContent()}
               </Heading>
 
               <Stack spacing='6'>
@@ -78,10 +78,10 @@ const CartScreen = () => {
               </Stack>
             </Stack>
             <Flex direction='column' align='center' flex='1'>
-              <CartOrderSummary/>
+              <CartOrderSummary />
 
               <HStack mt='6' fontWeight='semibold'>
-                <p> or </p>
+                <p>or</p>
                 <Link
                   as={ReactLink}
                   to='/products'
