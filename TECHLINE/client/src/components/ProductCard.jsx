@@ -13,11 +13,14 @@ import {
   HSStack,
   Text,
   HStack,
+  useToast,
 } from "@chakra-ui/react";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link as ReactLink } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addCartItem } from "../redux/actions/cartActions";
 
 const Rating = ({ rating, numberOfReviews }) => {
   const { iconSize, setIconSize } = useState("14px");
@@ -54,6 +57,28 @@ const Rating = ({ rating, numberOfReviews }) => {
 };
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const cartInfo = useSelector((state) => state.cart);
+  const { cart } = cartInfo;
+
+  const addItem = (id) => {
+    if (cart.some((cartItem) => cartItem.id === id)) {
+      toast({
+        description:
+          "This item is alresdy in your cart. Go to your cart to change the amount.",
+        status: "error",
+        isClosable: true,
+      });
+    } else {
+      dispatch(addCartItem(id, 1));
+      toast({
+        description: "Item has been added.",
+        status: "success",
+        isClosable: true,
+      });
+    }
+  };
   return (
     <Stack
       p='2'
@@ -112,14 +137,17 @@ const ProductCard = ({ product }) => {
         </Link>
       </Flex>
       <Flex justifyContent='space-between' alignContent='center' py='2'>
-        <Rating rating={product.rating} numberOfReviews={product.numberOfReviews}/>
+        <Rating
+          rating={product.rating}
+          numberOfReviews={product.numberOfReviews}
+        />
       </Flex>
       <Flex justify='space-between'>
         <Box fonSize='2xl' color={useColorModeValue("gray.800", "white")}>
           <Box as='span' color={"gray.600"} fontSize='lg'>
             $
           </Box>
-       {product.price}
+          {product.price}
         </Box>
         <Tooltip
           label='Add to cart'
@@ -128,7 +156,12 @@ const ProductCard = ({ product }) => {
           color='gray.800'
           fontSize='1.2em'
         >
-          <Button variant='ghost' display='flex' disabled={product.stock <= 0}>
+          <Button
+            variant='ghost'
+            display='flex'
+            disabled={product.stock <= 0}
+            onClick={() => addItem(product._id)}
+          >
             <Icon as={FiShoppingCart} h={7} w={7} alignSelf='center' />
           </Button>
         </Tooltip>

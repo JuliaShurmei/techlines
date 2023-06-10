@@ -15,7 +15,7 @@ export const cartSlice = createSlice({
     setLoading: (state) => {
       state.loading = true;
     },
-    setItemAdd: (state, { payload }) => {
+    cartItemAdd: (state, { payload }) => {
       const existingItem = state.cart.find((item) => item.id === payload.id);
 
       if (existingItem) {
@@ -33,7 +33,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setLoading, setError, setItemAdd } = cartSlice.actions;
+export const { setLoading, setError, cartItemAdd } = cartSlice.actions;
 export default cartSlice.reducer;
 
 export const cartSelector = (state) => state.cart;
