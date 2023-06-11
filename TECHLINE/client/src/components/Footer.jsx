@@ -64,13 +64,9 @@ const Footer = () => (
             </Text>
             <Stack
               spacing='4'
-              direction={{ base: "column", sm: "row" }}
+              direction={{ base: "column", sm: "row" }} 
               maxW={{ lg: "360px" }}
             >
-              <Input placeholder='Enter your email' type='email' required />
-              <Button variant='primary' type='submit' flexShrink={0}>
-                Subscribe
-              </Button>
             </Stack>
           </Stack>
         </Stack>
