@@ -1,12 +1,5 @@
-import axios from "axios";
-import {
-  setLoading,
-  setError,
-  cartItemAdd,
-  cartItemRemoval,
-  setExpressShipping,
-  clearCart,
-} from "../slices/cart";
+import axios from 'axios';
+import { setLoading, setError, cartItemAdd, cartItemRemoval, setExpressShipping, clearCart } from '../slices/cart';
 
 export const addCartItem = (id, qty) => async (dispatch) => {
   dispatch(setLoading(true));
@@ -28,7 +21,7 @@ export const addCartItem = (id, qty) => async (dispatch) => {
           ? error.response.data.message
           : error.message
           ? error.message
-          : "An unexpected error has occured. Please try again later."
+          : 'An unexpected error has occured. Please try again later.'
       )
     );
   }
