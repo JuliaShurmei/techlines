@@ -10,6 +10,8 @@ import LoginScreen from './screens/LoginScreen';
 import RegistrationScreen from './screens/RegistrationScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import CheckoutScreen from './screens/CheckoutScreen';
+import YourOrderScreen from './screens/YourOrderScreen';
+import AdminConsoleScreen from './screens/AdminConsoleScreen';
 import OrderSuccessScreen from './screens/OrderSuccessScreen';
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
             <Route path='/registration' element={<RegistrationScreen />} />
             <Route path='/profile' element={<ProfileScreen />} />
             <Route path='/checkout' element={<CheckoutScreen />} />
+            <Route path='/your-orders' element={<YourOrderScreen />} />
+            <Route path='/admin-console' element={<AdminConsoleScreen />} />
             <Route path='/order-success' element={<OrderSuccessScreen />} />
           </Routes>
         </main>
