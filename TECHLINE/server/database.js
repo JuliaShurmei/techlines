@@ -1,8 +1,7 @@
+// connection to our database.
 import mongoose from "mongoose";
 
 const connectToDatabase = async () => {
-  console.log(process.env.MONGO_URI);
-
   try {
     mongoose.set("strictQuery", false);
     const connect = await mongoose.connect(process.env.MONGO_URI, {
@@ -10,7 +9,7 @@ const connectToDatabase = async () => {
       useNewUrlParser: true,
     });
 
-    console.log(`MongoDB Connecter: ${connect.connection.host}`);
+    console.log(`MongoDB Connected: ${connect.connection.host}`);
   } catch (error) {
     console.log(`Error: ${error.message}`);
   }

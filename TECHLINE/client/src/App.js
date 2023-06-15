@@ -1,18 +1,18 @@
-import { ChakraProvider } from '@chakra-ui/react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import ProductsScreen from './screens/ProductsScreen';
-import CartScreen from './screens/CartScreen';
-import ProductScreen from './screens/ProductScreen';
-import Footer from './components/Footer';
-import LandingScreen from './screens/LandingScreen';
-import LoginScreen from './screens/LoginScreen';
-import RegistrationScreen from './screens/RegistrationScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import CheckoutScreen from './screens/CheckoutScreen';
-import YourOrderScreen from './screens/YourOrderScreen';
-import AdminConsoleScreen from './screens/AdminConsoleScreen';
-import OrderSuccessScreen from './screens/OrderSuccessScreen';
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import ProductsScreen from "./screens/ProductsScreen";
+import CartScreen from "./screens/CartScreen";
+import ProductScreen from "./screens/ProductScreen";
+import Footer from "./components/Footer";
+import LandingScreen from "./screens/LandingScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
+import ProfileScreen from "./screens/ProfileScreen";
+import CheckoutScreen from "./screens/CheckoutScreen";
+import YourOrderScreen from "./screens/YourOrderScreen";
+import AdminConsoleScreen from "./screens/AdminConsoleScreen";
+import OrderSuccessScreen from "./screens/OrderSuccessScreen";
 
 function App() {
   return (

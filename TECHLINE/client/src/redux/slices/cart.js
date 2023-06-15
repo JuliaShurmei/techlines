@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const calculateSubtotal = (cartState) => {
   let result = 0;
@@ -9,18 +9,20 @@ const calculateSubtotal = (cartState) => {
 export const initialState = {
   loading: false,
   error: null,
-  cart: JSON.parse(localStorage.getItem('cartItems')) ?? [],
-  expressShipping: JSON.parse(localStorage.getItem('expressShipping')) ?? false,
-  subtotal: localStorage.getItem('cartItems') ? calculateSubtotal(JSON.parse(localStorage.getItem('cartItems'))) : 0,
+  cart: JSON.parse(localStorage.getItem("cartItems")) ?? [],
+  expressShipping: JSON.parse(localStorage.getItem("expressShipping")) ?? false,
+  subtotal: localStorage.getItem("cartItems")
+    ? calculateSubtotal(JSON.parse(localStorage.getItem("cartItems")))
+    : 0,
 };
 
 const updateLocalStorage = (cart) => {
-  localStorage.setItem('cartItems', JSON.stringify(cart));
-  localStorage.setItem('subtotal', JSON.stringify(calculateSubtotal(cart)));
+  localStorage.setItem("cartItems", JSON.stringify(cart));
+  localStorage.setItem("subtotal", JSON.stringify(calculateSubtotal(cart)));
 };
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
   reducers: {
     setLoading: (state) => {
@@ -30,7 +32,9 @@ export const cartSlice = createSlice({
       const existingItem = state.cart.find((item) => item.id === payload.id);
 
       if (existingItem) {
-        state.cart = state.cart.map((item) => (item.id === existingItem.id ? payload : item));
+        state.cart = state.cart.map((item) =>
+          item.id === existingItem.id ? payload : item
+        );
       } else {
         state.cart = [...state.cart, payload];
       }
@@ -52,16 +56,23 @@ export const cartSlice = createSlice({
     },
     setExpressShipping: (state, { payload }) => {
       state.expressShipping = payload;
-      localStorage.setItem('expressShipping', payload);
+      localStorage.setItem("expressShipping", payload);
     },
     clearCart: (state) => {
-      localStorage.removeItem('cartItems');
+      localStorage.removeItem("cartItems");
       state.cart = [];
     },
   },
 });
 
-export const { setLoading, setError, cartItemAdd, cartItemRemoval, setExpressShipping, clearCart } = cartSlice.actions;
+export const {
+  setLoading,
+  setError,
+  cartItemAdd,
+  cartItemRemoval,
+  setExpressShipping,
+  clearCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;
 
 export const cartSelector = (state) => state.cart;

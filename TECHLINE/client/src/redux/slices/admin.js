@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const initialState = {
   error: null,
@@ -10,7 +10,7 @@ export const initialState = {
 };
 
 export const adminSlice = createSlice({
-  name: 'admin',
+  name: "admin",
   initialState,
   reducers: {
     setLoading: (state) => {
@@ -54,8 +54,16 @@ export const adminSlice = createSlice({
   },
 });
 
-export const { setLoading, setError, getUsers, userDelete, resetError, setDeliveredFlag, orderDelete, getOrders } =
-  adminSlice.actions;
+export const {
+  setLoading,
+  setError,
+  getUsers,
+  userDelete,
+  resetError,
+  setDeliveredFlag,
+  orderDelete,
+  getOrders,
+} = adminSlice.actions;
 export default adminSlice.reducer;
 
 export const adminSelector = (state) => state.admin;

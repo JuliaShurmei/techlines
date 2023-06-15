@@ -1,6 +1,15 @@
-import { Flex, Select, useColorModeValue as mode, Image, Box, Text, Spacer, Divider } from '@chakra-ui/react';
-import { useDispatch } from 'react-redux';
-import { addCartItem } from '../redux/actions/cartActions';
+import {
+  Flex,
+  Select,
+  useColorModeValue as mode,
+  Image,
+  Box,
+  Text,
+  Spacer,
+  Divider,
+} from "@chakra-ui/react";
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../redux/actions/cartActions";
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, image, price, stock, qty, id } = cartItem;
@@ -25,11 +34,12 @@ const CheckoutItem = ({ cartItem }) => {
           <Spacer />
           <Select
             maxW='64px'
-            focusBorderColor={mode('orange.500', 'orange.200')}
+            focusBorderColor={mode("orange.500", "orange.200")}
             value={qty}
             onChange={(e) => {
               dispatch(addCartItem(id, e.target.value));
-            }}>
+            }}
+          >
             {[...Array(stock).keys()].map((x) => (
               <option key={x + 1} value={x + 1}>
                 {x + 1}
@@ -41,7 +51,7 @@ const CheckoutItem = ({ cartItem }) => {
           <Text fontWeight='bold'>${price}</Text>
         </Box>
       </Flex>
-      <Divider bg={mode('gray.400', 'gray.800')} />
+      <Divider bg={mode("gray.400", "gray.800")} />
     </>
   );
 };

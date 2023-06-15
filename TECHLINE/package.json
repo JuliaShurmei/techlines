@@ -12,6 +12,7 @@
   "author": "Julia Shirmei",
   "license": "ISC",
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.0.0",
     "bcryptjs": "^2.4.3",
     "bundle-js": "^1.0.3",
     "concurrently": "^8.1.0",

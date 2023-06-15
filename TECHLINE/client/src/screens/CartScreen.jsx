@@ -12,23 +12,31 @@ import {
   AlertIcon,
   AlertDescription,
   Wrap,
-} from '@chakra-ui/react';
-import { Link as ReactLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import CartItem from '../components/CartItem';
-import CartOrderSummary from '../components/CartOrderSummary';
+} from "@chakra-ui/react";
+import { Link as ReactLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import CartItem from "../components/CartItem";
+import CartOrderSummary from "../components/CartOrderSummary";
 
 const CartScreen = () => {
   const cartInfo = useSelector((state) => state.cart);
   const { loading, error, cart } = cartInfo;
 
-  const getHeadingContent = () => (cart.length === 1 ? '(1 Item)' : `(${cart.length} Items)`);
+  const getHeadingContent = () =>
+    cart.length === 1 ? "(1 Item)" : `(${cart.length} Items)`;
 
   return (
     <Wrap spacing='30px' justify='center' minHeight='100vh'>
       {loading ? (
         <Stack direction='row' spacing={4}>
-          <Spinner mt={20} thickness='2px' speed='0.65s' emptyColor='gray.200' color='orange.500' size='xl' />
+          <Spinner
+            mt={20}
+            thickness='2px'
+            speed='0.65s'
+            emptyColor='gray.200'
+            color='orange.500'
+            size='xl'
+          />
         </Stack>
       ) : error ? (
         <Alert status='error'>
@@ -48,15 +56,17 @@ const CartScreen = () => {
         </Alert>
       ) : (
         <Box
-          maxW={{ base: '3xl', lg: '7xl' }}
+          maxW={{ base: "3xl", lg: "7xl" }}
           mx='auto'
-          px={{ base: '4', md: '8', lg: '12' }}
-          py={{ base: '6', md: '8', lg: '12' }}>
+          px={{ base: "4", md: "8", lg: "12" }}
+          py={{ base: "6", md: "8", lg: "12" }}
+        >
           <Stack
-            direction={{ base: 'column', lg: 'row' }}
-            align={{ lg: 'flex-start' }}
-            spacing={{ base: '8', md: '16' }}>
-            <Stack spacing={{ base: '8', md: '10' }} flex='2'>
+            direction={{ base: "column", lg: "row" }}
+            align={{ lg: "flex-start" }}
+            spacing={{ base: "8", md: "16" }}
+          >
+            <Stack spacing={{ base: "8", md: "10" }} flex='2'>
               <Heading fontSize='2xl' fontWeight='extrabold'>
                 Shopping Cart {getHeadingContent()}
               </Heading>
@@ -72,7 +82,11 @@ const CartScreen = () => {
 
               <HStack mt='6' fontWeight='semibold'>
                 <p>or</p>
-                <Link as={ReactLink} to='/products' color={mode('orange.500', 'orange.200')}>
+                <Link
+                  as={ReactLink}
+                  to='/products'
+                  color={mode("orange.500", "orange.200")}
+                >
                   Continue Shopping
                 </Link>
               </HStack>

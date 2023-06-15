@@ -1,8 +1,16 @@
-import { Button, Flex, Heading, Stack, Text, useColorModeValue as mode, Badge } from '@chakra-ui/react';
-import { useState } from 'react';
-import { FaArrowRight } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import { Link as ReactLink, useNavigate } from 'react-router-dom';
+import {
+  Button,
+  Flex,
+  Heading,
+  Stack,
+  Text,
+  useColorModeValue as mode,
+  Badge,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
+import { useSelector } from "react-redux";
+import { Link as ReactLink, useNavigate } from "react-router-dom";
 
 const CartOrderSummary = () => {
   const [buttonLoading, setButtonLoading] = useState();
@@ -13,7 +21,7 @@ const CartOrderSummary = () => {
 
   const checkoutHandler = () => {
     setButtonLoading(true);
-    navigate('/checkout');
+    navigate("/checkout");
   };
 
   return (
@@ -21,13 +29,13 @@ const CartOrderSummary = () => {
       <Heading size='md'>Order Summary</Heading>
       <Stack spacing='6'>
         <Flex justify='space-between'>
-          <Text fontWeight='medium' color={mode('gray.600', 'gray.400')}>
+          <Text fontWeight='medium' color={mode("gray.600", "gray.400")}>
             Subtotal
           </Text>
           <Text fontWeight='medium'>${subtotal}</Text>
         </Flex>
         <Flex justify='space-between'>
-          <Text fontWeight='medium' color={mode('gray.600', 'gray.400')}>
+          <Text fontWeight='medium' color={mode("gray.600", "gray.400")}>
             Shipping
           </Text>
           <Text fontWeight='medium'>
@@ -45,7 +53,10 @@ const CartOrderSummary = () => {
             Total
           </Text>
           <Text fontSize='xl' fontWeight='extrabold'>
-            $ {subtotal <= 1000 ? Number(subtotal) + Number(standardShipping) : subtotal}
+            ${" "}
+            {subtotal <= 1000
+              ? Number(subtotal) + Number(standardShipping)
+              : subtotal}
           </Text>
         </Flex>
       </Stack>
@@ -57,7 +68,8 @@ const CartOrderSummary = () => {
         fontSize='md'
         rightIcon={<FaArrowRight />}
         isLoading={buttonLoading}
-        onClick={() => checkoutHandler()}>
+        onClick={() => checkoutHandler()}
+      >
         Checkout
       </Button>
     </Stack>
