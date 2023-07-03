@@ -48,6 +48,10 @@ const CheckoutOrderSummary = () => {
     [shipping, subtotal]
   );
 
+  const checkoutOrder = () => {
+    navigate("/order-success");
+  };
+
   useEffect(() => {
     if (!error) {
       setButtonDisabled(false);
@@ -131,10 +135,14 @@ const CheckoutOrderSummary = () => {
         disabled={buttonDisabled}
             />*/}
       <Button
+        as={ReactLink}
+        to='/order-success'
         colorScheme='orange'
         size='lg'
         fontSize='md'
-      > Order
+        onClick={() => checkoutOrder()}
+      >
+        Order
       </Button>
       <Box align='center'>
         <Text fontSize='sm'>
